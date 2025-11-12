@@ -1,179 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Muhammad Fahad — Portfolio (Hero + About + Tech)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Space+Grotesk:wght@300;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#26272a; /* dark slate */
-      --panel:#2b2d30;
-      --muted:#9aa0a3;
-      --accent:#38f0a0; /* green */
-      --accent-2:#23e08a;
-      --glass: rgba(255,255,255,0.03);
-      --white: #f8f9fa;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--white);
-      font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, 'Space Grotesk', sans-serif;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
+  <title>Muhammad Fahad - Portfolio</title>
 
-    a{color:inherit;text-decoration:none}
 
-    /* Page container */
-    .page{
-      width:100%;
-      min-height:100vh;
-    }
-
-    /* NAV */
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:28px 6vw; position:relative;
-    }
-    .brand{font-family:'Space Grotesk';font-weight:600;color:var(--white);letter-spacing:1px}
-    .nav a{color:var(--muted);margin-left:24px;font-weight:500}
-    .nav a:hover{color:var(--white)}
-
-    /* HERO */
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr 540px;
-      gap:48px;
-      align-items:center;
-      padding:60px 6vw 80px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-left{max-width:720px}
-    .role-pill{display:inline-block;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#021010;padding:10px 18px;border-radius:8px;font-weight:700;margin-bottom:26px}
-
-    .name-upper{font-weight:300;color:var(--muted);letter-spacing:8px;font-size:48px;margin:0 0 6px}
-    .name-main{font-size:84px;line-height:0.95;margin:0;font-weight:900;color:var(--white)}
-
-    .subtitle{display:flex;align-items:center;gap:12px;margin:16px 0 28px;color:var(--muted);font-weight:500}
-    .play-dot{width:18px;height:18px;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:inline-block}
-
-    .social-row{display:flex;gap:14px;align-items:center;margin-top:22px}
-    .social-round{width:40px;height:40px;border-radius:50%;background:var(--panel);display:flex;align-items:center;justify-content:center;color:var(--accent);box-shadow:0 6px 14px rgba(0,0,0,0.5)}
-
-    .stats{display:flex;gap:40px;margin-top:46px;align-items:flex-end}
-    .stat{color:var(--muted);font-size:13px}
-    .stat .n{font-weight:900;font-size:26px;color:var(--white);display:block}
-
-    /* Hero right - portrait with circular bg */
-    .hero-right{position:relative;height:540px;display:flex;align-items:center;justify-content:center}
-    .hero-orb{position:absolute;right:0;bottom:0;width:780px;height:780px;border-radius:50%;background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.65));transform:translateX(22%);filter:blur(0px);}
-    .portrait-wrap{position:relative;z-index:2;width:460px;height:460px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.55));box-shadow: 0 40px 80px rgba(0,0,0,0.7)}
-    .portrait-wrap img{width:100%;height:100%;object-fit:cover;filter:grayscale(90%) contrast(98%)}
-    .green-dot{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--accent);box-shadow:0 6px 18px rgba(56,240,160,0.12)}
-    .gd-1{left:70px;top:110px}
-    .gd-2{right:58px;top:80px}
-
-    /* ABOUT section */
-    .about{display:grid;grid-template-columns: 1fr 520px;gap:48px;padding:60px 6vw;border-top:1px solid rgba(255,255,255,0.03)}
-    .about-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .about-gallery .big{grid-column:1 / span 2;border-radius:14px;overflow:hidden}
-    .about-gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px;display:block}
-
-    .about-right h3{color:var(--accent);margin:0 0 8px}
-    .about-right h2{margin:0 0 10px;font-weight:300;font-size:44px}
-    .about-right p.lead{color:var(--muted);font-size:15px}
-    .about-right p{color:var(--muted);margin-top:18px;text-align:justify}
-    .resume-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;background:transparent;border:2px solid var(--accent);color:var(--accent);border-radius:8px;margin-top:18px}
-
-    /* TECH STACK */
-    .tech{display:flex;gap:48px;align-items:center;padding:60px 6vw;border-top:1px solid rgba(255,255,255,0.03)}
-    .tech-left{flex:1;max-width:720px}
-    .tech-left p{color:var(--muted);margin-bottom:18px}
-    .badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
-    .badge{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#00221a;padding:10px 14px;border-radius:10px;font-weight:700;display:inline-flex;gap:10px;align-items:center;box-shadow:0 8px 18px rgba(2,34,26,0.08)}
-
-    .tech-illus{width:420px}
-
-    /* Footer */
-    footer{padding:40px 6vw;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03)}
-
-    /* Responsive */
-    @media (max-width:1100px){
-      .hero{grid-template-columns:1fr 420px}
-      .about{grid-template-columns:1fr}
-      .about-right{order:2}
-      .about-gallery{order:1}
-      .tech{flex-direction:column-reverse}
-      .tech-illus{width:320px}
-    }
-
-    @media (max-width:760px){
-      .nav{padding:20px}
-      .hero{grid-template-columns:1fr;padding:40px 6vw 40px}
-      .hero-right{height:420px;margin-top:26px}
-      .name-upper{font-size:28px}
-      .name-main{font-size:46px}
-      .portrait-wrap{width:320px;height:320px}
-      .stats{flex-direction:column;gap:10px}
-      .about-gallery img{height:160px}
-    }
-
-  </style>
 </head>
-<body>
-  <div class="page">
-    <nav class="nav">
-      <div class="brand">&lt;Fahad /&gt;</div>
-      <div class="links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#tech">Tech</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
 
-    <!-- HERO -->
+<body>
+  <nav class="header-bar">
+    <div class="brand">𝓕𝓪𝓱𝓪𝓭</div>
+
+    <style>
+      .brand {
+        font-family: 'Great Vibes', cursive;
+        font-size: 38px;
+        color: #38f0a0;
+        font-weight: normal;
+        letter-spacing: 2px;
+      }
+
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    </style>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+
+    <!-- Hero Section -->
     <header class="hero">
       <div class="hero-left">
         <div class="role-pill">Software Engineer</div>
         <h3 class="name-upper">Muhammad</h3>
-        <h1 class="name-main">Fahad</h1>
 
-        <div class="subtitle"><span class="play-dot"></span><span>Flutter • Dart • Mobile &amp; Web</span></div>
+        <h2 class="name-main">Fahad</h2>
+
+        <div class="subtitle">
+          <span class="play-dot"></span>
+          <span id="animated-text"></span>
+        </div>
+
+        <script>
+          const words = ["Flutter Developer", "Software Developer", "Gamer"];
+          const textElement = document.getElementById("animated-text");
+          const typingSpeed = 150; // ms per letter
+          const pauseBetweenWords = 1000; // ms pause after each word
+          let wordIndex = 0;
+          let letterIndex = 0;
+
+          function typeWord() {
+            const currentWord = words[wordIndex];
+            if (letterIndex < currentWord.length) {
+              textElement.textContent += currentWord[letterIndex];
+              letterIndex++;
+              setTimeout(typeWord, typingSpeed);
+            } else {
+              setTimeout(() => {
+                eraseWord();
+              }, pauseBetweenWords);
+            }
+          }
+
+          function eraseWord() {
+            if (letterIndex > 0) {
+              textElement.textContent = textElement.textContent.slice(0, -1);
+              letterIndex--;
+              setTimeout(eraseWord, typingSpeed / 2);
+            } else {
+              wordIndex = (wordIndex + 1) % words.length;
+              setTimeout(typeWord, typingSpeed);
+            }
+          }
+
+          // Start animation
+          typeWord();
+        </script>
 
         <div class="social-row">
           <a class="social-round" href="https://github.com/Fadyawan7" target="_blank" aria-label="GitHub">
             <!-- github svg -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.95 3.2 9.14 7.64 10.62.56.1.77-.24.77-.53 0-.26-.01-.95-.01-1.86-3.11.68-3.77-1.49-3.77-1.49-.51-1.3-1.24-1.65-1.24-1.65-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.16 1.71 1.16 1.01 1.73 2.66 1.23 3.31.94.1-.74.39-1.23.71-1.52-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.31 3.12 1.14.9-.25 1.86-.38 2.82-.38.96 0 1.92.13 2.82.38 2.17-1.45 3.12-1.14 3.12-1.14.61 1.54.23 2.68.11 2.96.72.78 1.16 1.78 1.16 3 0 4.29-2.62 5.24-5.11 5.52.4.35.75 1.04.75 2.09 0 1.51-.01 2.73-.01 3.1 0 .29.2.64.78.53C19.06 20.9 22.25 16.7 22.25 11.76 22.25 5.48 17.27.5 11 .5z" fill="currentColor"/>
+              <path
+                d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.95 3.2 9.14 7.64 10.62.56.1.77-.24.77-.53 0-.26-.01-.95-.01-1.86-3.11.68-3.77-1.49-3.77-1.49-.51-1.3-1.24-1.65-1.24-1.65-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.16 1.71 1.16 1.01 1.73 2.66 1.23 3.31.94.1-.74.39-1.23.71-1.52-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.31 3.12 1.14.9-.25 1.86-.38 2.82-.38.96 0 1.92.13 2.82.38 2.17-1.45 3.12-1.14 3.12-1.14.61 1.54.23 2.68.11 2.96.72.78 1.16 1.78 1.16 3 0 4.29-2.62 5.24-5.11 5.52.4.35.75 1.04.75 2.09 0 1.51-.01 2.73-.01 3.1 0 .29.2.64.78.53C19.06 20.9 22.25 16.7 22.25 11.76 22.25 5.48 17.27.5 11 .5z"
+                fill="currentColor" />
             </svg>
           </a>
 
-          <a class="social-round" href="https://www.linkedin.com/in/muhammad-fahad7" target="_blank" aria-label="LinkedIn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5c0 1.38-1.11 2.5-2.49 2.5S0 4.88 0 3.5 1.11 1 2.49 1 4.98 2.12 4.98 3.5zM.5 8.75h4.95v14.75H.5V8.75zm7.5 0h4.75v2.05h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.56v8.15h-4.95v-7.22c0-1.72-.03-3.94-2.4-3.94-2.4 0-2.76 1.87-2.76 3.79v7.37H8V8.75z" fill="currentColor"/></svg>
+          <a class="social-round" href="https://www.linkedin.com/in/muhammad-fahad7" target="_blank"
+            aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4.98 3.5c0 1.38-1.11 2.5-2.49 2.5S0 4.88 0 3.5 1.11 1 2.49 1 4.98 2.12 4.98 3.5zM.5 8.75h4.95v14.75H.5V8.75zm7.5 0h4.75v2.05h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.56v8.15h-4.95v-7.22c0-1.72-.03-3.94-2.4-3.94-2.4 0-2.76 1.87-2.76 3.79v7.37H8V8.75z"
+                fill="currentColor" />
+            </svg>
           </a>
 
           <a class="social-round" href="mailto:fahadtech.me@gmail.com" aria-label="Email">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20 4H4c-1.1 0-2 .9-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                fill="currentColor" />
+            </svg>
           </a>
 
           <a class="social-round" href="tel:+923252953179" aria-label="Call">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6.6 10.79a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 01.9-.27c1 .25 2.07.39 3.19.39a1 1 0 011 1V20a1 1 0 01-1 1C9.28 21 3 14.72 3 6a1 1 0 011-1h3.6a1 1 0 011 1c0 1.12.14 2.2.39 3.19a1 1 0 01-.27.9l-2.52 2.7z" fill="currentColor"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path
+                d="M6.6 10.79a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 01.9-.27c1 .25 2.07.39 3.19.39a1 1 0 011 1V20a1 1 0 01-1 1C9.28 21 3 14.72 3 6a1 1 0 011-1h3.6a1 1 0 011 1c0 1.12.14 2.2.39 3.19a1 1 0 01-.27.9l-2.52 2.7z"
+                fill="currentColor" />
+            </svg>
           </a>
         </div>
 
         <div class="stats">
-          <div class="stat"><span class="n">~6</span>Years Experience</div>
-          <div class="stat"><span class="n">50+</span>Projects Completed</div>
-          <div class="stat"><span class="n">~130k</span>Content Reach & Views</div>
+          <div class="stat"><span class="n">~2</span>Years Experience</div>
+          <div class="stat"><span class="n">7+</span>Projects Completed</div>
         </div>
       </div>
 
@@ -181,32 +133,48 @@
         <div class="hero-orb"></div>
         <div class="portrait-wrap">
           <!-- Place your profile image at assets/profile.jpg -->
-          <img src="assets/profile.jpg" alt="Muhammad Fahad">
+          <img src="assets/profile2.png" alt="Muhammad Fahad">
           <div class="green-dot gd-1"></div>
           <div class="green-dot gd-2"></div>
         </div>
       </div>
     </header>
 
-    <!-- ABOUT -->
+    <!-- About Section -->
     <section id="about" class="about">
       <div class="about-gallery">
-        <div class="big"><img src="assets/about1.jpg" alt="gallery"></div>
-        <img src="assets/about2.jpg" alt="gallery">
-        <img src="assets/about3.jpg" alt="gallery">
-        <img src="assets/about4.jpg" alt="gallery">
+        <div class="big">
+          <img src="assets/aboutbanner.jpg" alt="About Image 1" class="about-img" />
+        </div>
+        <div>
+          <img src="assets/abougem.png" alt="About Image 2" class="about-img" style="object-fit: cover;" />
+        </div>
+        <div>
+          <img src="assets/about1.png" alt="About Image 3" class="about-img" />
+        </div>
+        <div>
+          <img src="assets/about2.png" alt="About Image 4" class="about-img second-img" />
+        </div>
+        <div>
+          <img src="assets/about3.png" alt="About Image 4" class="about-img second-img" />
+        </div>
       </div>
 
       <div class="about-right">
         <h3>About Me</h3>
-        <h2>Hello! I'm Fahad</h2>
-        <p class="lead">A software engineer turned product engineer — I build delightful mobile experiences and reliable backend systems.</p>
+        <h2>Hello! I'm Muhammad Fahad</h2>
+        <p class="lead">Reflection of what I've been doing so far, so long.</p>
 
         <p>
-          I have developed solutions, MVPs and products across niches like travel, e-commerce and social apps for the last 6+ years. I enjoy UI/UX, clean architecture and open-sourcing my work. I also lead local developer communities and enjoy speaking at meetups.
+          I am a Flutter App Developer with 2 years of experience creating mobile and web solutions for startups,
+          businesses, and entrepreneurs. I enjoy building high-performance, user-friendly apps with Flutter, Firebase,
+          and REST APIs taking ideas from concept to full product launch. I have developed solutions across niches like
+          e-commerce, social platforms, real-time chat, and business apps. I am passionate about clean architecture,
+          scalable code, and smooth UI/UX, and I enjoy contributing to open-source projects and local developer
+          communities.
         </p>
 
-        <a class="resume-btn" href="assets/CV.pdf" target="_blank">Download Resume</a>
+        <a class="resume-btn" href="assets/fahadcv.pdf" target="_blank">Download Resume</a>
       </div>
     </section>
 
@@ -215,17 +183,23 @@
       <div class="tech-left">
         <h3 style="color:var(--accent);margin:0 0 8px">Tech Stack</h3>
         <h2 style="font-weight:300;margin:0 0 14px">Change is inevitable — I keep exploring</h2>
-        <p>Mobile development, web and server-side — these are the tools I use to ship products quickly and maintainably.</p>
+        <p>I build mobile and web applications with Flutter, using tools that help me deliver products efficiently and
+          maintainably. I enjoy turning complex problems into simple, user-friendly experiences that delight users.</p>
 
         <div class="badges" style="margin-top:18px">
           <span class="badge">Flutter</span>
           <span class="badge">Dart</span>
-          <span class="badge">Firebase</span>
-          <span class="badge">Node.js</span>
-          <span class="badge">Express</span>
-          <span class="badge">Postgres</span>
-          <span class="badge">Figma</span>
+          <span class="badge">Firebase Database</span>
           <span class="badge">REST API</span>
+          <span class="badge">MVVM</span>
+          <span class="badge">Soket.Io</span>
+          <span class="badge">Google Maps</span>
+          <span class="badge">REST API</span>
+          <span class="badge">Git & GitHub</span>
+          <span class="badge">State Management</span>
+          <span class="badge">Payment Integration</span>
+
+
         </div>
       </div>
 
@@ -235,12 +209,245 @@
       </div>
     </section>
 
+    <!-- Projects Section -->
+    <section class="cards-section" id="projects">
+      <div class="section-header">
+        <h3>My Work</h3>
+        <h2>Creative Flutter Projects</h2>
+        <p>
+          A showcase of my favorite Flutter apps built with love, focusing on performance, clean architecture, and great
+          UI/UX.
+        </p>
+      </div>
+
+      <div class="cards-container">
+        <div class="card">
+          <img src="assets/rocco1.png" alt="Rocco Live">
+          <div class="card-content">
+            <h4>Rocco Live</h4>
+            <h3 style="color:var(--accent);margin:0 0 8px">OnGoing</h3>
+            <p>Short-video platform similar to TikTok where users can earn through engagement and live interactions.</p>
+            <a href="YOUR_PLAYSTORE_LINK_HERE" target="_blank" style="display:inline-block; margin-top:10px;">
+              <img src="assets/playstore.png" alt="Rocco Live Play Store" style="width:25px; height:auto;">
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/homebarg.jpg" alt="Home Brigadier">
+          <div class="card-content">
+            <h4>Home Brigadier</h4>
+            <p>On-demand home service booking app for maintenance, cleaning, and repair work with trusted professionals.
+            </p>
+            <a href="https://play.google.com/store/apps/details?id=com.qutham.adminpanelpro&hl=en" target="_blank"
+              style="display:inline-block; margin-top:10px;">
+              <img src="assets/playstore.png" alt="Home Brigadier Play Store" style="width:25px; height:auto;">
+            </a>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="assets/insaff.png" alt="InsafApp">
+          <div class="card-content">
+            <h4>InsafApp</h4>
+            <p>Seeking justice has never been easier. Connect with experienced lawyers, present your case, and find the
+              justice you deserve—all in one convenient platform.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.dukoSolutions.insafApp" target="_blank"
+              style="display:inline-block; margin-top:10px;">
+              <img src="assets/playstore.png" alt="InsafApp Play Store" style="width:25px; height:auto;">
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/jitfit.png" alt="JiTFit">
+          <div class="card-content">
+            <h4>JiTFit</h4>
+            <p>Your personal gym companion is here! Jet Fit brings customized workout plans and real-time tracking to
+              help you crush your goals.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.trainerize.jitfit&hl=en" target="_blank"
+              style="display:inline-block; margin-top:10px;">
+              <img src="assets/playstore.png" alt="JiTFit Play Store" style="width:25px; height:auto;">
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/shedrive.jpg" alt="SheDrives">
+          <div class="card-content">
+            <h4>SheDrives</h4>
+            <p>Ride-hailing platform built exclusively for women ensuring safety, independence, and empowerment.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.mtech.sdrives&hl=en" target="_blank"
+              style="display:inline-block; margin-top:10px;">
+              <img src="assets/playstore.png" alt="SheDrives Play Store" style="width:25px; height:auto;">
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/quranapp.png" alt="Quran App">
+          <div class="card-content">
+            <h4>Quran App</h4>
+            <p>A clean and elegant Quran reading app with smooth navigation and bookmarking features for daily
+              recitation.</p>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7216405201610543105/" target="_blank"
+              style="display:inline-block; margin-top:10px;">
+              <img src="assets/playstore.png" alt="Quran App Play Store" style="width:25px; height:auto;">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <!-- <section id="experience" class="experience">
+      <div class="section-header">
+        <h3>Experience</h3>
+        <h2>Reflection of what I've been doing so far, so long</h2>
+        <p>My professional journey and the technologies I've worked with.</p>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h4>Rocco Live App</h4>
+            <p>Software Engineer | Jan 2022 - Present</p>
+          </div>
+          <div class="experience-date">2 years</div>
+        </div>
+
+        <div class="technologies">
+          <span class="tech-tag">Flutter</span>
+          <span class="tech-tag">Dart</span>
+          <span class="tech-tag">GitHub Actions</span>
+          <span class="tech-tag">Supabase</span>
+          <span class="tech-tag">Firebase</span>
+          <span class="tech-tag">Fintech - Payments</span>
+          <span class="tech-tag">REST APIs</span>
+          <span class="tech-tag">Dart package</span>
+        </div>
+
+        <div class="experience-details">
+          <ul>
+            <li>Working with flutter: bloc state management, alongside provider to maintain local states and global use
+              cases</li>
+            <li>Integrated payment gateways into flutter app with REST APIs</li>
+            <li>Handled local packages to maintain custom components and to maintain API architecture</li>
+            <li>Maintaining layered architecture for better encapsulation and abstraction of code from Application layer
+              to domain layer and to data layer</li>
+            <li>Learned GitHub actions for CI/CD</li>
+            <li>Worked with various env. flavors in flutter app (dev, qa, stage, prod)</li>
+            <li>Learned concepts like ACL (Application Constant Lookup) for maintaining features in live app</li>
+            <li>Integration of REST APIs, Firebase and local cached concepts for better user experience</li>
+            <li>Added features in huge code base with scalability in mind, along with other concepts of OOP and design
+              pattern</li>
+            <li>Learned project management tools like Jira and Mural</li>
+            <li>Worked in Agile software methodology, worked in sprints and different team structures like Squads</li>
+            <li>Helped in interviews and expanding team of developers</li>
+          </ul>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="section-header">
+        <h3>Get in touch</h3>
+        <h2>Let's build something together :)</h2>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Phone</h4>
+              <p>+923252953179</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Email</h4>
+              <p>fahadtech.me@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="social-row">
+            <a class="social-round" href="https://github.com/Fadyawan7" target="_blank" aria-label="GitHub">
+              <!-- github svg -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden>
+                <path
+                  d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.95 3.2 9.14 7.64 10.62.56.1.77-.24.77-.53 0-.26-.01-.95-.01-1.86-3.11.68-3.77-1.49-3.77-1.49-.51-1.3-1.24-1.65-1.24-1.65-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.16 1.71 1.16 1.01 1.73 2.66 1.23 3.31.94.1-.74.39-1.23.71-1.52-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.31 3.12 1.14.9-.25 1.86-.38 2.82-.38.96 0 1.92.13 2.82.38 2.17-1.45 3.12-1.14 3.12-1.14.61 1.54.23 2.68.11 2.96.72.78 1.16 1.78 1.16 3 0 4.29-2.62 5.24-5.11 5.52.4.35.75 1.04.75 2.09 0 1.51-.01 2.73-.01 3.1 0 .29.2.64.78.53C19.06 20.9 22.25 16.7 22.25 11.76 22.25 5.48 17.27.5 11 .5z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+
+            <a class="social-round" href="https://www.linkedin.com/in/muhammad-fahad7" target="_blank"
+              aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M4.98 3.5c0 1.38-1.11 2.5-2.49 2.5S0 4.88 0 3.5 1.11 1 2.49 1 4.98 2.12 4.98 3.5zM.5 8.75h4.95v14.75H.5V8.75zm7.5 0h4.75v2.05h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.56v8.15h-4.95v-7.22c0-1.72-.03-3.94-2.4-3.94-2.4 0-2.76 1.87-2.76 3.79v7.37H8V8.75z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+
+            <a class="social-round" href="https://mail.google.com/mail/?view=cm&to=fahadtech.me@gmail.com"
+              target="_blank" aria-label="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M20 4H4c-1.1 0-2 .9-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+
+
+            <a class="social-round" href="tel:+923252953179" aria-label="Call">
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <path
+                  d="M6.6 10.79a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 01.9-.27c1 .25 2.07.39 3.19.39a1 1 0 011 1V20a1 1 0 01-1 1C9.28 21 3 14.72 3 6a1 1 0 011-1h3.6a1 1 0 011 1c0 1.12.14 2.2.39 3.19a1 1 0 01-.27.9l-2.52 2.7z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+
+
+    </section>
+
     <footer>
-      <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
-        <div>© 2025 Muhammad Fahad</div>
-        <div><a href="#contact" style="color:var(--muted)">Contact</a> • <a href="https://github.com/Fadyawan7" target="_blank" style="color:var(--muted)">GitHub</a></div>
+      <div>
+        © 2026 Muhammad Fahad •
       </div>
     </footer>
   </div>
+
+  <script>
+    // Update calendar with current date
+    document.addEventListener('DOMContentLoaded', function () {
+      const months = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+      const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+      const now = new Date();
+      const month = months[now.getMonth()];
+      const day = now.getDate();
+      const weekday = weekdays[now.getDay()];
+
+      document.querySelector('.calendar-month').textContent = month;
+      document.querySelector('.calendar-day').textContent = day;
+      document.querySelector('.calendar-weekday').textContent = weekday;
+    });
+
+  </script>
+  html {
+  scroll-behavior: smooth;
+  }
 </body>
+
 </html>
